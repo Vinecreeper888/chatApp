@@ -1,0 +1,43 @@
+.navbar {
+   display: flex;
+   justify-content: flex-start;
+   margin: 0rem 1rem;
+}
+
+.listItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+    border: 2px solid #fff;
+    border-radius: 2.5rem;
+    padding: 1rem 5rem;
+    width: 90%;
+}
+
+.menuItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    list-style-type: none;
+    border: 2px solid #fff;
+    border-radius: 2.5rem;
+    padding: 1rem 5rem 1rem 2.5rem;
+    width: 2.5%;
+    margin-right: 0.5rem;
+}
+
+.menuItem:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.menuItem > li:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+ul > li {
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 2rem;
+}

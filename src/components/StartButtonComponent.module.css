@@ -1,0 +1,18 @@
+.startBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rem;
+}
+
+.startBtn {
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: #7C12F7;
+    color: #fff;
+    border: none;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 50%;
+}
