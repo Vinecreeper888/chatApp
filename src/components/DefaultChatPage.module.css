@@ -1,7 +1,36 @@
 .chatHistoryBg {
-    border: 2px solid #fff;
+    /* border: 2px solid #fff; */
     border-radius: 0.5rem;
     margin: 0.5rem 0.5rem;
     padding: 0.25rem;
     margin-bottom: 0.5rem;
+    height: 500px;
+    overflow-y: scroll;
+    behavior: smooth;
+}
+
+.baseMessage {
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+}
+
+.chatItemBox {
+    border: none;
+    width: auto;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: -0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    width: 25%;
+    background-color: #0957D0;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chatBoxItemContainer {
+    display: flex;
+    justify-content: flex-end;
 }

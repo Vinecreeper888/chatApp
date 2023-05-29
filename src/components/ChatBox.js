@@ -2,35 +2,41 @@ import styles from "./ChatBox.module.css";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import {io} from "socket.io-client";
 
-const ChatBox = () => {    
 
+
+//socket.emit('custom-event',10,"Hi",{a:'a'})
+//socket.emit('send-message',message);
+
+const ChatBox = (props) => {    
+    
     const [isShake,setIsShake] = useState(false);
     const [inputText,setInputText] = useState("");
     const [isClicked, setIsClicked] = useState(false);
-
+    
+    
     const handleHover = () => {
         setIsShake(!isShake);
     }
-
+    
     const handleClick = () => {
         setIsClicked(!isClicked);
         if(inputText !== "") {
             console.log(inputText);
         }
+        const socket = io("http://localhost:3001");
+        socket.on("connect", () => {
+            //console.log("You connected with id:",socket.id);
+            socket.emit('send-message',inputText);
+        })
+        //props.onDisplayText(inputText)
         setInputText("");
     }
 
     const handleChange = (e) => {
         e.preventDefault();
-        if(e.target.value !== "") {
-            setInputText(e.target.value);
-        }
-    }
-
-    const handleReset = () => {
-        console.log("i am getting reset now")
-        setInputText("");
+        setInputText(e.target.value);
     }
 
     return(
@@ -40,7 +46,6 @@ const ChatBox = () => {
                 className={styles.textBox} 
                 placeholder="Start typing here.."
                 onChange={handleChange}
-                onReset={isClicked ? handleReset : null}
                 value={inputText}
             />
             <button className={styles.sendBtn} onClick={handleClick}>
