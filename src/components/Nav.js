@@ -15,7 +15,7 @@ const Nav = () => {
             </ul>
             <ul className={styles.listItems}>
                 <li>About</li>
-                <li onClick={navigateToHome}>TEST</li>
+                <li onClick={navigateToHome}>Chatapp</li>
                 <li>Login</li>
             </ul>
         </div>

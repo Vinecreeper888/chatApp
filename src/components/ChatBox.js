@@ -2,20 +2,16 @@ import styles from "./ChatBox.module.css";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import {io} from "socket.io-client";
-
-
-
-//socket.emit('custom-event',10,"Hi",{a:'a'})
-//socket.emit('send-message',message);
+import { useContext } from "react";
+import { NewInstanceContext } from "../context/NewInstanceProvider";
 
 const ChatBox = (props) => {    
     
     const [isShake,setIsShake] = useState(false);
     const [inputText,setInputText] = useState("");
     const [isClicked, setIsClicked] = useState(false);
-    
-    
+    const {sendMessage, populateSocketId} = useContext(NewInstanceContext);
+
     const handleHover = () => {
         setIsShake(!isShake);
     }
@@ -24,20 +20,31 @@ const ChatBox = (props) => {
         setIsClicked(!isClicked);
         if(inputText !== "") {
             console.log(inputText);
+            populateSocketId();
+            sendMessage(inputText);
         }
-        const socket = io("http://localhost:3001");
-        socket.on("connect", () => {
-            //console.log("You connected with id:",socket.id);
-            socket.emit('send-message',inputText);
-        })
-        //props.onDisplayText(inputText)
         setInputText("");
     }
 
     const handleChange = (e) => {
         e.preventDefault();
+        //setIsself(prevState => !prevState);
         setInputText(e.target.value);
     }
+
+    const handleKeyDown = (e) => {
+        //e.preventDefault();
+        if(e.keyCode === 13) {
+            setIsClicked(!isClicked);
+            if(inputText !== "") {
+                console.log(inputText);
+                populateSocketId();
+                sendMessage(inputText);
+            }
+            setInputText("");   
+        }
+    }
+
 
     return(
         <div className={styles.chatBoxParentContainer}>
@@ -47,6 +54,7 @@ const ChatBox = (props) => {
                 placeholder="Start typing here.."
                 onChange={handleChange}
                 value={inputText}
+                onKeyDown={handleKeyDown}
             />
             <button className={styles.sendBtn} onClick={handleClick}>
                 <FontAwesomeIcon icon={faPlay} 

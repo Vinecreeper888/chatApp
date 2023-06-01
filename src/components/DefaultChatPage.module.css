@@ -28,9 +28,39 @@
     padding: 0.5rem 0.5rem;
     display: flex;
     justify-content: flex-start;
+    font-family: 'Poppins', sans-serif;
 }
 
 .chatBoxItemContainer {
     display: flex;
     justify-content: flex-end;
+}
+
+.newInstanceChatNotification {
+    background-color: #00677F;
+    color: #fff;
+    font-size: 0.75rem;
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem;
+    font-family: 'Poppins',sans-serif;
+}
+
+.chatBoxItemNewInstanceContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chatItemBoxForNewInstance {
+    border: none;
+    width: auto;
+    border-top-left-radius: -0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    width: 25%;
+    background-color: #27be0c;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    font-family: 'Poppins',sans-serif;
 }
